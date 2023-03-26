@@ -40,19 +40,23 @@
     </nav>
     <main class="container">
       <div class="row">
+        <h1>Gif Search</h1>
         <div class="col">
-          <form id="keywordForm" > 
+          <form id="keywordForm">
             <input type="text" id="keyword" />
-            <button type="submit">submit</button>
+            <button type="submit" id="submitBtn">submit</button>
           </form>
-          <div class="row">
-            <div class="col" id="lastWordBtn"></div>
+          <div class="row gx-5">
+            <div class="col">
+              <div id="lastWordBtn"></div>
+              <div id="keywordBtns"></div>
+            </div>
           </div>
-          <div class="row">
-            <div class="col" id="keywordBtns"></div>
-          </div>
-          <div class="gifs"></div>
+          <div id="gifs"></div>
         </div>
+      </div>
+      <div class="row">
+        <div class="col" id="gifs"></div>
       </div>
     </main>
     <script
