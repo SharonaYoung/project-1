@@ -1,6 +1,8 @@
 // api: https://api.giphy.com/v1/gifs/search?api_key=vg6WXDw9SY1PiOQGjPyZw2r4nytNngc0&q=cats&limit=12&offset=0&rating=g&lang=en
 const API_key = "vg6WXDw9SY1PiOQGjPyZw2r4nytNngc0";
+const form = document.querySelector("form");
 const mainEl = document.querySelector("main");
+const buttons = document.querySelector("#buttons");
 const inputEl = document.querySelector("#keyword");
 const gifsEl = document.querySelector("#gifs");
 const keywords = document.querySelector('#keywordBtns');
@@ -34,29 +36,29 @@ function renderGifs(gifs) {
 };
 
 // function for clicking the submit button
-mainEl.addEventListener("click", async function(event){
+form.addEventListener("submit", async function(event){
   event.preventDefault();
   searchWord = inputEl.value;
-  
-  if(event.target.matches('#submitBtn')){
-    getGifs();
+  console.log("submit  pushed");
+  // pull gifs with input value
+  getGifs();
 
-    const keywordBtn = document.createElement("button");
-    // make button for keywords  
-    keywordBtn.textContent = inputEl.value;
-    keywords.append(keywordBtn);
-    keywordBtn.classList.add("word");  
-    
-    // store last search words in local storage    
-    words.push(searchWord);
-    localStorage.setItem("searched_words", JSON.stringify(words));  
-  };
+  // make button for keywords  
+  const keywordBtn = document.createElement("button");
+  keywordBtn.textContent = inputEl.value;
+  keywords.append(keywordBtn);
+  keywordBtn.classList.add("word");  
   
+  // store last searched words in local storage    
+  words.push(searchWord);
+  localStorage.setItem("searched_words", JSON.stringify(words));  
+
+  // clear input block
   inputEl.value = "";
 });
 
 // function for clicking the dynamic search word button
-mainEl.addEventListener('click', async function(event){
+buttons.addEventListener('click', async function(event){
   event.preventDefault();
   searchWord=event.target.innerText;
   if(event.target.matches(".word")){
@@ -72,16 +74,13 @@ mainEl.addEventListener('click', async function(event){
   }
 })
 
-// show button of last word 
-const lastWordBtn = document.createElement("button");
+// show buttons of last words
 const lastSearched = JSON.parse(localStorage.getItem("searched_words"));
 
 if(lastSearched){
-  console.log(lastSearched);
-  lastSearched.map(function(word){
-    lastWordBtn.innerText = word;
-    lastWordBtn.classList.add("word");
-    lastWord.append(lastWordBtn);
-    console.log(word);
-  })
+  const showWords = lastSearched.map((word) => `
+    <button class = "word">${word}</button>
+  `
+  ).join(" ");
+  lastWord.innerHTML = showWords;
 }
