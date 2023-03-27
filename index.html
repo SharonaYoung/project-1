@@ -14,41 +14,25 @@
     />
   </head>
   <body>
-    <nav class="navbar bg-dark mb-5" data-bs-theme="dark">
+    <nav class="navbar bg-body-tertiary bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Giphy App</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Features</a>
-            <a class="nav-link" href="#">Pricing</a>
-            <a class="nav-link disabled">Disabled</a>
-          </div>
-        </div>
+        <a class="navbar-brand">Giphy App</a>
       </div>
     </nav>
     <main class="container">
       <div class="row">
-        <h1>Gif Search</h1>
+        <h1 class="mt-3">Gif Search</h1>
+        <p>Enter a search word or phrase</p>
         <div class="col">
           <form id="keywordForm">
             <input type="text" id="keyword" />
-            <button type="submit" id="submitBtn">submit</button>
+            <button type="submit" id="submitBtn" class="btn-secondary">
+              submit
+            </button>
           </form>
-          <div class="row gx-5">
+          <div class="row">
             <div class="col" id="buttons">
-              <div id="lastWordBtn"></div>
+              <div class="my-2" id="lastWordBtn"></div>
               <div id="keywordBtns"></div>
             </div>
           </div>

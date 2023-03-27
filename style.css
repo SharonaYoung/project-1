@@ -1,3 +1,9 @@
-body {
-    
+.word {
+  margin-right: 5px;
+  border-radius: 5px;
+  color: #212529;
+  border: solid 1px #212529;
+}
+p {
+  line-height: .5rem;
 }

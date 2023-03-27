@@ -1,5 +1,4 @@
-// api: https://api.giphy.com/v1/gifs/search?api_key=vg6WXDw9SY1PiOQGjPyZw2r4nytNngc0&q=cats&limit=12&offset=0&rating=g&lang=en
-const API_key = "vg6WXDw9SY1PiOQGjPyZw2r4nytNngc0";
+const API_key = "";
 const form = document.querySelector("form");
 const mainEl = document.querySelector("main");
 const buttons = document.querySelector("#buttons");
@@ -28,7 +27,7 @@ async function getGifs() {
 function renderGifs(gifs) {
   const gifTemplate = gifs.map(gif => ( 
     `
-    <img src=${gif.images.fixed_height.url} alt="gif image" />
+    <img src=${gif.images.fixed_height.url} alt="gif image" class="img-thumbnail rounded m-1"/>
     `
   // remove comma after each image    
   )).join(' ');
@@ -79,7 +78,7 @@ const lastSearched = JSON.parse(localStorage.getItem("searched_words"));
 
 if(lastSearched){
   const showWords = lastSearched.map((word) => `
-    <button class = "word">${word}</button>
+    <button class = "word btn btn-outline-secondary btn-sm">${word}</button>
   `
   ).join(" ");
   lastWord.innerHTML = showWords;
